@@ -1,0 +1,23 @@
+img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 4%;
+}
+
+.explanation {
+  font-size: .9rem;
+  margin: 5%;
+}
+
+.hide-button {
+  margin: 0 auto;
+  font-size: .8rem;
+  background-color: grey;
+  width: max-content;
+  padding: 1.5% 2.5%;
+  border-radius: 3px;
+}
+
+.hide {
+  display: none;
+}
