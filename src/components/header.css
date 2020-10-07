@@ -1,3 +1,7 @@
 .header {
   font-size: 1.8rem;
 }
+.header p {
+  margin: 0% 0 1% 0;
+  padding: 1% 0 0 0;
+}
