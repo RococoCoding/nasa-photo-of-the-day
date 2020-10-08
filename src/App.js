@@ -3,17 +3,26 @@ import "./App.css";
 import Header from "./components/header";
 import TodaysPic from "./components/todayspic";
 import axios from "axios";
+import PropTypes from 'prop-types';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Pickapic from "./components/pickapic";
 
 function App() {
+const [pic, setPic] = useState("assets/loading.jpg"); //one APOD photo at a time, pic === API data
+const [visible, setVisible] = useState(false); //for hide/show explanation button
 const date = new Date();
-
-const [pic, setPic] = useState("assets/loading.jpg");
-const [visible, setVisible] = useState(false);
-const [pickedDate, setDate] = useState(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`)
+const [pickedDate, setDate] = useState(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`) //for random date
+const [startDate, setStartDate] = useState(new Date());
 
 const settingVisible = (input) => {
   setVisible(input);
+}
+
+const pickDate = (date) =>{
+  console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`)
+  setDate(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+  setStartDate(date);
 }
 
 const randomDate = () => {
@@ -75,8 +84,10 @@ useEffect(() => {
         visible={visible}
         settingVisible={settingVisible}
       />
-       <Pickapic
+      <Pickapic
+        pickDate={pickDate}
         lucky={randomDate}
+        startDate={startDate}
       />
     </div>
   );
