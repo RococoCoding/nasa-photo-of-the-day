@@ -2,22 +2,23 @@ import React from "react";
 import "./todayspic.css";
 
 const TodaysPic = (props) => {
-  const {imgUrl, author, title, explanation, visible, settingVisible} = props;
+  const {author, title, explanation, visible, settingVisible} = props;
 
-  function hideText() {
+  function hideText() { //change text of button to say hide exp/show exp
     return visible ? "Hide":"Show";
   }
-  function hideClass() {
+
+  function hideClass() { //set class of exp <p> to hide
     return visible ? "": "hide";
   }
-  function isAuthor() {
+
+  function isAuthor() { //if no copyright info included with api data
     return author ? `By ${author}`:"No copyright information available";
   }
 
 
   return (
     <div>
-      <img src={imgUrl} alt={title}/>
       <p className="title">{title}</p>
       <p className="author">{isAuthor()}</p>
       <div className="hide-button" onClick={()=>settingVisible(!visible)}>{hideText()} Photographer's Explanation</div>
