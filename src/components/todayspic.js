@@ -2,7 +2,7 @@ import React from "react";
 import "./todayspic.css";
 
 const TodaysPic = (props) => {
-  const {imgUrl, author, title, explanation, visible, settingVisible} = props;
+  const {author, title, explanation, visible, settingVisible} = props;
 
   function hideText() {
     return visible ? "Hide":"Show";
@@ -17,7 +17,6 @@ const TodaysPic = (props) => {
 
   return (
     <div>
-      <img src={imgUrl} alt={title}/>
       <p className="title">{title}</p>
       <p className="author">{isAuthor()}</p>
       <div className="hide-button" onClick={()=>settingVisible(!visible)}>{hideText()} Photographer's Explanation</div>

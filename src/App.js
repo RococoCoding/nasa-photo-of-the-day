@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from "react";
-import "./App.css";
-import Header from "./components/header";
-import TodaysPic from "./components/todayspic";
-import axios from "axios";
-import PropTypes from 'prop-types';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./App.css";
+import axios from "axios";
+import Header from "./components/header";
+import Apod from "./components/apod";
+import TodaysPic from "./components/todayspic";
 import Pickapic from "./components/pickapic";
 
 function App() {
 const [pic, setPic] = useState("assets/loading.jpg"); //one APOD photo at a time, pic === API data
 const [visible, setVisible] = useState(false); //for hide/show explanation button
 const date = new Date();
-const [pickedDate, setDate] = useState(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`) //for random date
+const [pickedDate, setDate] = useState(`2011-11-08`) //for random date `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 const [startDate, setStartDate] = useState(new Date());
 
 const settingVisible = (input) => {
@@ -20,7 +19,6 @@ const settingVisible = (input) => {
 }
 
 const pickDate = (date) =>{
-  console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`)
   setDate(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
   setStartDate(date);
 }
@@ -30,7 +28,6 @@ const randomDate = () => {
   let year = Math.floor(Math.random() * (currentYear + 1 - 1995) + 1995)
   let month = pickMonth() + 1;
   let date = pickDate();
-  console.log("year")
   function pickDate() {
     let months31 = [0, 2, 4, 6, 7, 9, 11];
     let months30 = [3, 5, 8, 10];
@@ -76,8 +73,11 @@ useEffect(() => {
       <Header 
         date={pic.date}
       />
-      <TodaysPic 
+      <Apod 
         imgUrl={pic.url}
+        title={pic.title} 
+      />
+      <TodaysPic 
         author={pic.copyright}
         title={pic.title}
         explanation={pic.explanation}
