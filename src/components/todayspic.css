@@ -17,6 +17,10 @@ img {
   border-radius: 3px;
 }
 
+.hide-button:hover {
+  cursor: pointer;
+}
+
 .author {
   margin-bottom: 3%;
   margin-top: 0;

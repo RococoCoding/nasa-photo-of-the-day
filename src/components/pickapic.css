@@ -13,6 +13,10 @@ p {
   width: max-content;
 }
 
+.lucky:hover {
+  cursor: pointer;
+}
+
 .react-datepicker-wrapper {
   margin-bottom: 0;
 }
