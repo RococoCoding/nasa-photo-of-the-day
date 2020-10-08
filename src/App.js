@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/header";
 import TodaysPic from "./components/todayspic";
 import axios from "axios";
+import Pickapic from "./components/pickapic";
 
 function App() {
 const date = new Date();
@@ -20,7 +21,7 @@ const randomDate = () => {
   let year = Math.floor(Math.random() * (currentYear + 1 - 1995) + 1995)
   let month = pickMonth() + 1;
   let date = pickDate();
-  
+  console.log("year")
   function pickDate() {
     let months31 = [0, 2, 4, 6, 7, 9, 11];
     let months30 = [3, 5, 8, 10];
@@ -61,7 +62,6 @@ useEffect(() => {
   fetchData();
   
 }, [pickedDate]);
-console.log(pic)
   return (
     <div className="App">
       <Header 
@@ -74,6 +74,8 @@ console.log(pic)
         explanation={pic.explanation}
         visible={visible}
         settingVisible={settingVisible}
+      />
+       <Pickapic
         lucky={randomDate}
       />
     </div>
